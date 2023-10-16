@@ -1,42 +1,42 @@
 # github-style
 
-## Init hugo site
+## 初始化hugo
 
 ```bash
 hugo new site mysite
 cd mysite
 ```
 
-## Install the theme
+## 安装主题
 
 ```bash
 git submodule add git@github.com:MeiK2333/github-style.git themes/github-style
 ```
 
-## Update the theme
+## 更新主题
 
-If you just installed the theme, it is already in the latest version. If not, you can update using the below commands
+如果您刚刚安装了主题，则它已经在最新版本中。如果没有，您可以使用以下命令进行更新
 
 ```bash
 cd themes/github-style
 git pull
 ```
 
-Then, you need to rename the previous `posts` folder to `post`
+然后,您需要将以前的`posts`重新命名为`post`
 
 ```bash
 cd <you-project-folder>
 mv content/posts content/post
 ```
 
-## Setup readme
+## 设置readme.md
 
 ```bash
 hugo new readme.md
 echo '`Hello World!`' > content/readme.md
 ```
 
-## Pin post
+## 设置Pin post
 
 ```
 ---
@@ -44,17 +44,17 @@ pin: true
 ---
 ```
 
-## Add new post
+## 添加新帖子
 
-Hugo will create a post with `draft: true`, change it to false in order for it to show in the website.
+设置`draft:true`以便在网站上显示
 
 ```
 hugo new post/title_of_the_post.md
 ```
 
-## Limit display content
+## 限制显示内容
 
-### Approach 1: use summary
+### 1.使用摘要
 
 ```
 ---
@@ -65,9 +65,10 @@ summary: "The summary content"
 ---
 ```
 
-### Approach 2: use `<!--more-->`
+### 2使用 `<!--more-->`
 
-Use `<!--more-->` to seperate content that will display in the posts page as abstraction and the rest of the content. This is different from summary, as summary will not appear in the post.
+用于分隔将在帖子页面中显示为抽象的内容和其余内容。这与摘要不同，因为摘要不会出现在帖子中。<!--more-->
+
 ```
 ---
 title: "title"
@@ -79,9 +80,9 @@ abstraction show in the post page
 other content
 ```
 
-## add last modified data
+## 添加上次修改数据
 
-add to `config.toml`
+添加 `config.toml`
 
 ```toml
 lastmod = true
@@ -90,7 +91,7 @@ lastmod = true
   lastmod = ["lastmod", ":fileModTime", ":default"]
 ```
 
-## Use [gitalk](https://github.com/gitalk/gitalk) to support comments
+## 使用 [gitalk](https://github.com/gitalk/gitalk) 已支持评论
 
 add to `config.toml`
 
@@ -111,9 +112,9 @@ enableGitalk = true
     distractionFreeMode = false
 ```
 
-## Support LaTex
+## 对LaTex的支持
 
-In you post add `math: true` to [front matter](https://gohugo.io/content-management/front-matter/)
+在你的帖子前言添加`math: true` [front matter](https://gohugo.io/content-management/front-matter/)
 
 ```
 ---
@@ -121,7 +122,7 @@ katex: math
 ---
 ```
 
-Then the [katex script](https://katex.org/docs/autorender.html) will auto render the string enclosed be delimiters.
+然后 [katex script](https://katex.org/docs/autorender.html) 会自动渲染包含分隔符的字符串
 
 ```
 # replace ... with latex formula
@@ -131,42 +132,56 @@ display block $$ ... $$
 
 ![latex example](images/latex_example.png)
 
-## Support MathJax
-you can add MathJax:true to frontmatter
+## 支持 MathJax
+
+将`mathJax: true`添加到前方
 
 ```
 mathJax: true
 ```
-## config.toml example
+
+## config.toml 示例
 
 ```toml
-baseURL = "https://meik2333.com/"
+baseURL = "https://li-nuonuo.github.io/"
+# 域名
 languageCode = "zh-cn"
-title = "MeiK's blog"
+# 语言
+title = "li-nuonuo's blog"
+# 标题
 theme = "github-style"
+# 主题
 googleAnalytics = "UA-123456-789"
+# 谷歌分析
 pygmentsCodeFences = true
+# 分区代码围栏
 pygmentsUseClasses = true
+# 分区使用类
 
 [params]
   author = "MeiK"
+  # 作者
   description = "In solitude, where we are least alone."
-  github = "MeiK2333"
-  facebook = "MeiK2333"
-  twitter = "MeiK2333"
-  linkedin = "MeiK2333"
-  instagram = "MeiK2333"
-  tumblr = "MeiK2333"
-  email = "meik2333@gmail.com"
-  url = "https://meik2333.com"
+  # 随便说句话
+  github = "github.com/li-nuonuo"
+  facebook = ""
+  twitter = ""
+  linkedin = ""
+  instagram = ""
+  tumblr = ""
+  email = "2029142041@qq.com"
+  url = "https://li-nuonuo.github.io"
   keywords = "blog, google analytics"
   rss = true
   lastmod = true
   userStatusEmoji = "😀"
+  # 启用emoji表情
   favicon = "/images/github.png"
+  # 网站图标
   location = "China"
+  # 定位
   enableGitalk = true
-
+  # 第三方评论
   [params.gitalk]
     clientID = "Your client ID" 
     clientSecret = "Your client secret" 
@@ -193,14 +208,14 @@ pygmentsUseClasses = true
 
 ```
 
-## Support collapsible block
+## 支持折叠块
 
-You can create a collapsible block like this:
+这样创建
 
 ```
-{{<details "summary title">}}
+{{<details "标题">}}
 
-block content
+内容
 
 {{</details>}}
 ```
@@ -208,15 +223,15 @@ block content
 And it will show like this:
 
 <details>
-  <summary>summary title</summary>
-  <p>block content</p>
+  <summary>标题</summary>
+  <p>内容</p>
 </details>
 
-## deploy.sh example
+## deploy.sh 示例
 
-There are various way to deploy to github, here is a link to official [document](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
+有多种方法可以部署到 github，这里是官方[文档](https://gohugo.io/hosting-and-deployment/hosting-on-github/)的链接。
 
-Here is an sample. Note line 22 have `env HUGO_ENV="production"`, makes sure googleAnalysis is loaded during production, but is not loaded when we are testing it in localhost.
+下面是一个示例。注意第 22 行有 ，确保 googleAnalysis 在生产过程中加载，但在我们在本地主机中测试它时没有加载。`env HUGO_ENV="production"`
 
 ```bash
 #!/bin/sh
@@ -254,3 +269,5 @@ Then you can verify the site is working and use `git push --all` to push the cha
 ## TODO
 
 - 重写标题导航，那玩意儿引入的 JS 在控制台报错。
+
+
