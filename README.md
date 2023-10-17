@@ -21,6 +21,11 @@ git submodule add git@github.com:MeiK2333/github-style.git themes/github-style
 cd themes/github-style
 git pull
 ```
+## 启用主题
+hugo.toml
+```bash
+theme='github-style'
+```
 
 然后,您需要将以前的`posts`重新命名为`post`
 
@@ -264,10 +269,15 @@ cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)
 #git push --all
 ```
 
-Then you can verify the site is working and use `git push --all` to push the change to github. If you don't want to check again every time, you can uncomment the `#git push --all` in the script.
+然后，您可以验证网站是否正常工作，并使用“git-push-all”将更改推送到github。如果不想每次都再次检查，可以取消注释脚本中的“#git-push-all”。
 
 ## TODO
 
 - 重写标题导航，那玩意儿引入的 JS 在控制台报错。
+
+## 本地预览
+```bash
+hugo server
+```
 
 
